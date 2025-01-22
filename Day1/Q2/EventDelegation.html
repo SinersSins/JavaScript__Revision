@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Delegation</title>
+  </head>
+  <body>
+    <h1>Event Delegation Example</h1>
+    <button id="add-item">Add List item</button>
+
+    <ul id="list" >
+    
+    </ul>
+  </body>
+</html>
+<script>
+  let count = 1;
+    
+document.querySelector("#add-item").addEventListener("click", function(){
+    let parent = document.querySelector("#list");
+    let newItem = document.createElement("li");
+
+    newItem.innerText = `Item ${count}`;
+    parent.append(newItem)
+    count++
+})
+
+
+document.querySelector("#list").addEventListener("click", function(){
+    if(event.target.tagName == "LI"){
+        console.log(`Clicked on : ${event.target.innerText}`)
+
+        event.target.style.backgroundColor = "red"
+    }
+})
+</script>
